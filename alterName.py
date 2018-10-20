@@ -10,12 +10,12 @@ import os.path
 import xml.dom.minidom
 
 #获得文件夹中所有文件
-FindPath = 'H:\\car\\xml'
+FindPath = 'C:\\Users\\ibit\\Desktop\\Real-time Roadv2\\training\\Annotations'
 FileNames = os.listdir(FindPath)
 s = []
 classes_list = []
 #修改后保存的路径
-xml_path = 'H:\\car\\xml3'
+xml_path = 'C:\\Users\\ibit\\Desktop\\Real-time Roadv2\\training\\zhouran'
 for file_name in FileNames:
     if not os.path.isdir(file_name):  # 判断是否是文件夹,不是文件夹才打开
         print (file_name)
@@ -26,6 +26,12 @@ for file_name in FileNames:
     root = dom.documentElement
 
     # 获取标签对name之间的值
+    path = root.getElementsByTagName('path')
+    if len(path)>0:
+       for i in range(len(path)):
+          path[i] .firstChild.data = ''
+
+    
     name = root.getElementsByTagName('name')
     for i in range(len(name)):
         # print (name[i].firstChild.data)
@@ -64,7 +70,7 @@ for file_name in FileNames:
     #将修改后的xml文件保存
 	
     with open(os.path.join(xml_path, file_name), 'w') as fh:
-        dom.writexml(fh,encoding="gb2312")
+        dom.writexml(fh,encoding="UTF-8")
         print('写入name/pose OK!')
     print(classes_list)
     print(len(classes_list))

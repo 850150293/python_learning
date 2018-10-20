@@ -2,7 +2,7 @@
 import  xml.dom.minidom
 import os,sys
 
-rootdir = 'H:\car\xml'
+rootdir = 'C:\\Users\\ibit\\Desktop\\Real-time Roadv2\\training\\zhouran'
 list = os.listdir(rootdir) #列出文件夹下所有的目录与文件
 ## 空列表
 classes_list = [] 
